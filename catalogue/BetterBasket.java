@@ -2,6 +2,7 @@ package catalogue;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Write a description of class BetterBasket here.
@@ -23,7 +24,10 @@ public class BetterBasket extends Basket implements Serializable
         return true;
       }
     }
-    return super.add( pr );     // Call add in ArrayList
+    super.add( pr );     // Call add in ArrayList
+    Collections.sort(this, new SortByNum());
+
+    return (true);
   }
 
   // You need to add code here

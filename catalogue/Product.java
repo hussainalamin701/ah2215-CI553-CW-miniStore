@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @version 2.0
  */
 
-public class Product implements Serializable
+public class Product implements Comparable<Product>
 {
   private static final long serialVersionUID = 20092506;
   private String theProductNum;       // Product number
@@ -56,6 +56,12 @@ public class Product implements Serializable
   public void setQuantity( int aQuantity )
   { 
     theQuantity = aQuantity;
+  }
+
+  @Override
+  public int compareTo(Product p1){
+
+    return this.getProductNum().compareTo(p1.getProductNum());
   }
 
 }
