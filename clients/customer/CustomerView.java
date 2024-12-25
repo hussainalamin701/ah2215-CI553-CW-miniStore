@@ -35,6 +35,7 @@ public class CustomerView implements Observer
   private final JButton     theBtClear = new JButton( Name.CLEAR );
   private final JButton     theBtCheckName = new JButton( Name.CHECK);
 
+
   private Picture thePicture = new Picture(80,80);
   private StockReader theStock   = null;
   private CustomerController cont= null;
@@ -61,6 +62,7 @@ public class CustomerView implements Observer
     cp.setLayout(null);                             // No layout manager
     rootWindow.setSize( W, H );                     // Size of Window
     rootWindow.setLocation( x, y );
+    rootWindow.setForeground(Color.blue);
 
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
     

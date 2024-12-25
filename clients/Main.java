@@ -85,6 +85,8 @@ class Main
     CashierController cont  = new CashierController( model, view );
     view.setController( cont );
 
+    window.setBackground(Color.gray);
+
     model.addObserver( view );       // Add observer to the model
     window.setVisible(true);         // Make window visible
     model.askForUpdate();            // Initial display

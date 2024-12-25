@@ -26,6 +26,7 @@ public class CashierView implements Observer
   private final JLabel      pageTitle  = new JLabel();
   private final JLabel      theAction  = new JLabel();
   private final JTextField  theInput   = new JTextField();
+  private final JTextField buyMany = new JTextField();
   private final JTextArea   theOutput  = new JTextArea();
   private final JScrollPane theSP      = new JScrollPane();
   private final JButton     theBtCheck = new JButton( CHECK );
@@ -60,6 +61,8 @@ public class CashierView implements Observer
     rootWindow.setSize( W, H );                     // Size of Window
     rootWindow.setLocation( x, y );
 
+    rootWindow.setBackground( Color.lightGray );
+
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
 
     pageTitle.setBounds( 110, 0 , 270, 20 );       
@@ -68,12 +71,13 @@ public class CashierView implements Observer
     
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
     theBtCheck.addActionListener(                   // Call back code
-      e -> cont.doCheck( theInput.getText() ) );
+      e -> cont.doCheck(theInput.getText(), Integer.parseInt(buyMany.getText())) );
     cp.add( theBtCheck );                           //  Add to canvas
 
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
       e -> cont.doBuy() );
+
     cp.add( theBtBuy );                             //  Add to canvas
 
     theBtBought.setBounds( 16, 25+60*3, 80, 40 );   // Bought Button
@@ -81,15 +85,18 @@ public class CashierView implements Observer
       e -> cont.doBought() );
     cp.add( theBtBought );                          //  Add to canvas
 
-    theAction.setBounds( 110, 25 , 270, 20 );       // Message area
+    theAction.setBounds( 110, 25 , 160, 20 );       // Message area
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas
 
-    theInput.setBounds( 110, (10 + 50) * 1, (270/2), 40 );         // Input Area
+    buyMany.setBounds( 300, 50, 80, 40 );         // Buy Quantity Area
+    buyMany.setText("1");                           // Blank
+    buyMany.setFont( f );
+    cp.add( buyMany );                              // Add to canvas
+
+    theInput.setBounds( 110, 50, 170, 40 );         // Input Area
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
-
-
 
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
     theOutput.setText( "" );                        //  Blank

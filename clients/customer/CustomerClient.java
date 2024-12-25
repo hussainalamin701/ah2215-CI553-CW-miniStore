@@ -38,6 +38,7 @@ public class CustomerClient
     view.setController( cont );
 
     model.addObserver( view );       // Add observer to the model
+
     window.setVisible(true);         // Display Scree
   }
 }

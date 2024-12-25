@@ -55,7 +55,7 @@ public class CashierModel extends Observable
    * Check if the product is in Stock
    * @param productNum The product number
    */
-  public void doCheck(String productNum )
+  public void doCheck(String productNum, int buyMany )
   {
     String theAction = "";
     theState  = State.process;                  // State process
@@ -74,7 +74,7 @@ public class CashierModel extends Observable
               pr.getPrice(),                    //    price
               pr.getQuantity() );               //    quantity     
           theProduct = pr;                      //   Remember prod.
-          theProduct.setQuantity( amount );     //    & quantity
+          theProduct.setQuantity( buyMany );     //    & quantity
           theState = State.checked;             //   OK await BUY 
         } else {                                //  F
           theAction =                           //   Not in Stock
