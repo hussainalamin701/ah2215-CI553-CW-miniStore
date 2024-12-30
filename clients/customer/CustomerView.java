@@ -59,7 +59,10 @@ public class CustomerView implements Observer
     }
     Container cp         = rpc.getContentPane();    // Content Pane
     Container rootWindow = (Container) rpc;         // Root Window
+
     cp.setLayout(null);                             // No layout manager
+    cp.setBackground(new Color(0x70798C));
+
     rootWindow.setSize( W, H );                     // Size of Window
     rootWindow.setLocation( x, y );
     rootWindow.setForeground(Color.blue);
@@ -71,17 +74,20 @@ public class CustomerView implements Observer
     cp.add( pageTitle );
 
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check button
+    theBtCheck.setBackground(new Color(0x022B3A));
+    theBtCheck.setForeground(Color.WHITE);
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck( theInput.getText() ) );
     cp.add( theBtCheck );                           //  Add to canvas
 
     theBtClear.setBounds( 16, 25+60*0, 80, 40 );    // Clear button
+    theBtClear.setBackground(new Color(0x022B3A));
     theBtClear.addActionListener(                   // Call back code
       e -> cont.doClear() );
     cp.add( theBtClear );                           //  Add to canvas
 
     theBtCheckName.setBounds( 16, 25+60*1, 80, 40 );
-    theBtCheckName.setBackground(Color.gray);
+    theBtCheckName.setBackground(new Color(0x022B3A));
     theBtCheckName.setForeground(Color.white);
     theBtCheckName.setText("Search");
     theBtCheckName.addActionListener(
@@ -89,14 +95,17 @@ public class CustomerView implements Observer
     cp.add( theBtCheckName );
 
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
+    theAction.setBackground(new Color(0xF5F1ED));
     theAction.setText( " " );                       // blank
     cp.add( theAction );                            //  Add to canvas
 
     theInput.setBounds( 110, 50, 270, 40 );         // Product no area
+    theInput.setBackground(new Color(0xF5F1ED));
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
     
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
+    theOutput.setBackground(new Color(0xF5F1ED));
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas

@@ -69,6 +69,7 @@ public class CashierView implements Observer
     rootWindow.setLocation( x, y );
 
     rootWindow.setBackground( Color.black );
+    cp.setBackground(new Color(0x70798C));
 
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
     Font titleFont = new Font("Arial", Font.BOLD, 12);
@@ -103,6 +104,7 @@ public class CashierView implements Observer
     cp.add( theBtBought );                          //  Add to canvas
 
     theBtClear.setBounds( (80 * 4) - 25, 25+60*4, 80, 40 );
+    theBtClear.setBackground(Color.cyan);
     theBtClear.addActionListener(
             e -> cont.doClear() );
     cp.add( theBtClear );

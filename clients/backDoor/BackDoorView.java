@@ -52,7 +52,10 @@ public class BackDoorView implements Observer
     }
     Container cp         = rpc.getContentPane();    // Content Pane
     Container rootWindow = (Container) rpc;         // Root Window
+
     cp.setLayout(null);                             // No layout manager
+    cp.setBackground(new Color(0x70798C));
+
     rootWindow.setSize( W, H );                     // Size of Window
     rootWindow.setLocation( x, y );
     

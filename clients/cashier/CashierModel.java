@@ -141,7 +141,27 @@ public class CashierModel extends Observable
   }
 
   public void doClear(){
+    String theAction = "";
 
+    try{
+
+      if(theBasket != null &&
+         theBasket.size() >= 1)
+      {
+        theBasket = null;
+      }
+      theState = State.process;
+      theAction = "Cleared";
+      theBasket = null;
+
+    } catch( Exception e ){
+      DEBUG.error( "%s\n%s",
+              "CashierModel.doBuy", e.getMessage() );
+      theAction = e.getMessage();
+    }
+
+    theState = State.process;                   // All Done
+    setChanged(); notifyObservers(theAction);
   }
 
   /**
