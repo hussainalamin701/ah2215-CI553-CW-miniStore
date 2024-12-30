@@ -75,7 +75,8 @@ public class CashierModel extends Observable
             String.format( "%s : %7.2f (%2d) ", //
               pr.getDescription(),              //    description
               pr.getPrice(),                    //    price
-              pr.getQuantity() );               //    quantity     
+              pr.getQuantity() );               //    quantity
+
           theProduct = pr;                      //   Remember prod.
           theProduct.setQuantity( buyMany );     //    & quantity
           theState = State.checked;             //   OK await BUY 
@@ -137,6 +138,10 @@ public class CashierModel extends Observable
 
     theState = State.process;
     setChanged(); notifyObservers();
+  }
+
+  public void doClear(){
+
   }
 
   /**

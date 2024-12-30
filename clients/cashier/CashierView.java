@@ -23,6 +23,7 @@ public class CashierView implements Observer
   private static final String BUY    = "Buy";
   private static final String BOUGHT = "Bought/Pay";
   private static final String DISCOUNT = "Discount";
+  private static final String CLEAR = "Clear";
 
   private final JLabel      pageTitle  = new JLabel();
   private final JLabel      theAction  = new JLabel();
@@ -37,6 +38,7 @@ public class CashierView implements Observer
   private final JButton     theBtBuy   = new JButton( BUY );
   private final JButton     theBtBought= new JButton( BOUGHT );
   private final JButton     theBtDiscount  = new JButton( DISCOUNT );
+  private final JButton     theBtClear = new JButton( CLEAR );
 
   private StockReadWriter theStock     = null;
   private OrderProcessing theOrder     = null;
@@ -66,12 +68,17 @@ public class CashierView implements Observer
     rootWindow.setSize( W, H );                     // Size of Window
     rootWindow.setLocation( x, y );
 
-    rootWindow.setBackground( Color.lightGray );
+    rootWindow.setBackground( Color.black );
 
     Font f = new Font("Monospaced",Font.PLAIN,12);  // Font f is
+    Font titleFont = new Font("Arial", Font.BOLD, 12);
 
-    pageTitle.setBounds( 110, 0 , 270, 20 );       
-    pageTitle.setText( "Thank You for Shopping at MiniStrore" );                        
+    theOutput.setBackground(Color.white); // Set the output text area background.
+
+    pageTitle.setBounds( 110, 0 , 270, 20 );
+
+    pageTitle.setFont(titleFont);
+    pageTitle.setText( "Thank You for Shopping at MiniStore" );
     cp.add( pageTitle );  
     
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
@@ -94,6 +101,11 @@ public class CashierView implements Observer
     theBtBought.addActionListener(                  // Call back code
       e -> cont.doBought() );
     cp.add( theBtBought );                          //  Add to canvas
+
+    theBtClear.setBounds( (80 * 4) - 25, 25+60*4, 80, 40 );
+    theBtClear.addActionListener(
+            e -> cont.doClear() );
+    cp.add( theBtClear );
 
     theAction.setBounds( 110, 25 , 160, 20 );       // Message area
     theAction.setText( "" );                        // Blank

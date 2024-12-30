@@ -33,6 +33,10 @@ public class CashierController
     model.doDiscount(p);
   }
 
+  public void doClear(){
+    model.doClear();
+  }
+
    /**
    * Buy interaction from view
    */
