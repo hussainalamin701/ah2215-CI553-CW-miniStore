@@ -16,22 +16,27 @@ import java.util.Observer;
  */
 public class CashierView implements Observer
 {
-  private static final int H = 300;       // Height of window pixels
+  private static final int H = 350;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
   
   private static final String CHECK  = "Check";
   private static final String BUY    = "Buy";
   private static final String BOUGHT = "Bought/Pay";
+  private static final String DISCOUNT = "Discount";
 
   private final JLabel      pageTitle  = new JLabel();
   private final JLabel      theAction  = new JLabel();
+
   private final JTextField  theInput   = new JTextField();
   private final JTextField buyMany = new JTextField();
   private final JTextArea   theOutput  = new JTextArea();
+
   private final JScrollPane theSP      = new JScrollPane();
+
   private final JButton     theBtCheck = new JButton( CHECK );
   private final JButton     theBtBuy   = new JButton( BUY );
   private final JButton     theBtBought= new JButton( BOUGHT );
+  private final JButton     theBtDiscount  = new JButton( DISCOUNT );
 
   private StockReadWriter theStock     = null;
   private OrderProcessing theOrder     = null;
@@ -70,6 +75,7 @@ public class CashierView implements Observer
     cp.add( pageTitle );  
     
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
+    theBtCheck.setToolTipText("Check the product details by entering its code.");
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck(theInput.getText(), Integer.parseInt(buyMany.getText())) );
     cp.add( theBtCheck );                           //  Add to canvas
@@ -77,8 +83,12 @@ public class CashierView implements Observer
     theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
     theBtBuy.addActionListener(                     // Call back code
       e -> cont.doBuy() );
-
     cp.add( theBtBuy );                             //  Add to canvas
+
+    theBtDiscount.setBounds( 16, 25+60*2, 80, 40 );
+    theBtDiscount.addActionListener(
+            e -> cont.doDiscount(theInput.getText()) );
+    cp.add( theBtDiscount );
 
     theBtBought.setBounds( 16, 25+60*3, 80, 40 );   // Bought Button
     theBtBought.addActionListener(                  // Call back code
@@ -98,7 +108,7 @@ public class CashierView implements Observer
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
 
-    theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
+    theSP.setBounds( 110, 100, 270, 145 );          // Scrolling pane
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas

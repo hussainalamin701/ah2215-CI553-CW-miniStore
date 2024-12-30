@@ -19,6 +19,8 @@ public class CashierModel extends Observable
   private Product     theProduct = null;            // Current product
   private Basket      theBasket  = null;            // Bought items
 
+  private CashierView CV = null;
+
   private String      pn = "";                      // Product being processed
 
   private StockReadWriter theStock     = null;
@@ -65,6 +67,7 @@ public class CashierModel extends Observable
     {
       if ( theStock.exists( pn ) )              // Stock Exists?
       {                                         // T
+
         Product pr = theStock.getDetails(pn);   //  Get details
         if ( pr.getQuantity() >= amount )       //  In stock?
         {                                       //  T
@@ -93,6 +96,49 @@ public class CashierModel extends Observable
     setChanged(); notifyObservers(theAction);
   }
 
+  public void doDiscount(String products){
+    String theAction = "";
+//    int    amount  = 1;                         //  & quantity
+//    try
+//    {
+//      if ( theState != State.checked )          // Not checked
+//      {                                         //  with customer
+//        theAction = "please check its availablity first";
+//      } else {
+//        String basket = theBasket.getDetails();
+//
+//
+//        theAction = "Discount applied";
+//      }
+//    } catch( StockException e )
+//    {
+//      DEBUG.error( "%s\n%s",
+//              "CashierModel.doBuy", e.getMessage() );
+//      theAction = e.getMessage();
+//    }
+//    theState = State.process;                   // All Done
+//    setChanged(); notifyObservers(theAction);
+
+    theState  = State.process;
+
+    System.out.println(theProduct.getDescription());
+    System.out.println(theProduct.getPrice());
+
+    if( theProduct.getPrice() > 200.0 ){
+      double originalPrice = theProduct.getPrice();
+      double discountedPrice = theProduct.getPrice() * 0.9;
+      theProduct.setPrice(discountedPrice);
+
+      System.out.println("Discounted item price : " + (discountedPrice));
+
+    }else{
+      theAction = "Discount Unavailable";
+    }
+
+    theState = State.process;
+    setChanged(); notifyObservers();
+  }
+
   /**
    * Buy the product
    */
@@ -117,6 +163,7 @@ public class CashierModel extends Observable
           theAction = "Purchased " +            //    details
                   theProduct.getDescription();  //
         } else {                                // F
+
           theAction = "!!! Not in stock";       //  Now no stock
         }
       }
