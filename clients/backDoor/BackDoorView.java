@@ -65,39 +65,53 @@ public class BackDoorView implements Observer
     pageTitle.setText( "Staff check and manage stock" );                        
     cp.add( pageTitle );
     
-    theBtQuery.setBounds( 16, 25+60*0, 80, 40 );    // Buy button 
+    theBtQuery.setBounds( 16, 25+60*0, 80, 40 );    // Buy button
+    theBtQuery.setBackground(new Color(0x022B3A));
+    theBtQuery.setForeground(Color.WHITE);
+
     theBtQuery.addActionListener(                   // Call back code
       e -> cont.doQuery( theInput.getText() ) );
     cp.add( theBtQuery );                           //  Add to canvas
 
     theBtRStock.setBounds( 16, 25+60*1, 80, 40 );   // Check Button
+    theBtRStock.setBackground(new Color(0x022B3A));
+    theBtRStock.setForeground(Color.WHITE);
     theBtRStock.addActionListener(                  // Call back code
       e -> cont.doRStock( theInput.getText(),
                           theInputNo.getText() ) );
     cp.add( theBtRStock );                          //  Add to canvas
 
-    theBtClear.setBounds( 16, 25+60*2, 80, 40 );    // Buy button 
+    theBtClear.setBounds( 16, 25+60*2, 80, 40 );    // Buy button
+    theBtClear.setBackground(new Color(0x022B3A));
+    theBtClear.setForeground(Color.WHITE);
     theBtClear.addActionListener(                   // Call back code
       e -> cont.doClear() );
     cp.add( theBtClear );                           //  Add to canvas
 
  
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
+    theAction.setBackground(new Color(0xD0D6F8));
     theAction.setText( "" );                        // Blank
     cp.add( theAction );                            //  Add to canvas
 
     theInput.setBounds( 110, 50, 120, 40 );         // Input Area
+    theInput.setBackground(new Color(0xD0D6F8));
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
     
     theInputNo.setBounds( 260, 50, 120, 40 );       // Input Area
+    theInputNo.setBackground(new Color(0xD0D6F8));
     theInputNo.setText("0");                        // 0
     cp.add( theInputNo );                           //  Add to canvas
 
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
+    theSP.setBackground(new Color(0xD0D6F8));
+
     theOutput.setText( "" );                        //  Blank
-    theOutput.setFont( f );                         //  Uses font  
+    theOutput.setFont( f );                         //  Uses font
+    theOutput.setBackground(new Color(0xD0D6F8));
     cp.add( theSP );                                //  Add to canvas
+
     theSP.getViewport().add( theOutput );           //  In TextArea
     rootWindow.setVisible( true );                  // Make visible
     theInput.requestFocus();                        // Focus is here

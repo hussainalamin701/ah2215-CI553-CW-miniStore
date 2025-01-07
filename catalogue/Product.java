@@ -17,6 +17,7 @@ public class Product implements Comparable<Product>
   private double thePrice;            // Price of product
   private int    theQuantity;         // Quantity involved
 
+
   /**
    * Construct a product details
    * @param aProductNum Product number
@@ -25,7 +26,7 @@ public class Product implements Comparable<Product>
    * @param aQuantity The Quantity of the product involved
    */
   public Product( String aProductNum, String aDescription,
-                  double aPrice, int aQuantity )
+                  double aPrice, int aQuantity)
   {
     theProductNum  = aProductNum;     // Product number
     theDescription = aDescription;    // Description of product
@@ -33,10 +34,11 @@ public class Product implements Comparable<Product>
     theQuantity    = aQuantity;       // Quantity involved
   }
   
-  public String getProductNum()  { return theProductNum; }
+  public String getProductNum()  { return theProductNum;  }
   public String getDescription() { return theDescription; }
-  public double getPrice()       { return thePrice; }
-  public int    getQuantity()    { return theQuantity; }
+  public double getPrice()       { return thePrice;       }
+  public int    getQuantity()    { return theQuantity;    }
+
   
   public void setProductNum( String aProductNum )
   { 
@@ -57,6 +59,8 @@ public class Product implements Comparable<Product>
   { 
     theQuantity = aQuantity;
   }
+
+
 
   @Override
   public int compareTo(Product p1){

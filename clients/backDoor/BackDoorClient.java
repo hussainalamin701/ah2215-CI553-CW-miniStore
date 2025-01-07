@@ -6,7 +6,7 @@ import middle.RemoteMiddleFactory;
 
 import javax.swing.*;
 
-/**
+/**g
  * The standalone BackDoor Client
  */
 

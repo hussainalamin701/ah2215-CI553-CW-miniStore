@@ -17,7 +17,8 @@ public class Basket extends ArrayList<Product> implements Serializable
 {
   private static final long serialVersionUID = 1;
   private int    theOrderNum = 0;          // Order number
-  
+  private Product[] theProducts;
+
   /**
    * Constructor for a basket which is
    *  used to represent a customer order/ wish list
@@ -29,7 +30,7 @@ public class Basket extends ArrayList<Product> implements Serializable
   
   /**
    * Set the customers unique order number
-   * Valid order Numbers 1 .. N
+   * Valid order Numbers 1 . N
    * @param anOrderNum A unique order number
    */
   public void setOrderNum( int anOrderNum )
@@ -64,6 +65,51 @@ public class Basket extends ArrayList<Product> implements Serializable
    * Returns a description of the products in the basket suitable for printing.
    * @return a string description of the basket products
    */
+
+  public int getTotal(){
+    double total = 0.0;
+
+    if (this.size() > 0){
+      for (Product pr: this)
+      {
+
+        int number = pr.getQuantity();
+        total += pr.getPrice() * number;
+      }
+    }
+
+    return (int) total;
+  }
+
+  public void setTotal(int n){
+
+    double total = 0.0;
+    if (this.size() > 0){
+      for (Product pr: this)
+      {
+        total = n;
+      }
+    }
+  }
+
+  public String discount(int discountPercentage){
+    Locale uk = Locale.UK;
+    StringBuilder sb = new StringBuilder(256);
+    Formatter     fr = new Formatter(sb, uk);
+    double total = getTotal();
+
+    if (this.size() > 0){
+      double discountPrice = total - (total * (discountPercentage /100));
+      total = total - (total - discountPrice);
+
+      fr.format("----------------------------\n");
+      fr.format("Total discount: $%.2f", total);
+      fr.format("----------------------------\n");
+    }
+
+    return sb.toString();
+  }
+
   public String getDetails()
   {
     Locale uk = Locale.UK;
@@ -84,6 +130,9 @@ public class Basket extends ArrayList<Product> implements Serializable
         fr.format("(%3d) ",     number );
         fr.format("%s%7.2f",    csign, pr.getPrice() * number );
         fr.format("\n");
+
+
+
         total += pr.getPrice() * number;
       }
       fr.format("----------------------------\n");
@@ -93,4 +142,18 @@ public class Basket extends ArrayList<Product> implements Serializable
     }
     return sb.toString();
   }
+
+  public Product [] getProductList(){
+    if (this.size() == 0){
+      return new Product[0];
+    }
+    Product [] products = new Product[this.size()];
+    for (int i = 0; i < this.size(); i++){
+      products[i] = this.get(i);
+    }
+    return products;
+
+  }
+
+
 }

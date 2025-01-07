@@ -29,8 +29,8 @@ public class CashierController
     model.doCheck(pn, buyMany);
   }
 
-  public void doDiscount(String p){
-    model.doDiscount(p);
+  public void doDiscount(){
+    model.doDiscount();
   }
 
   public void doClear(){

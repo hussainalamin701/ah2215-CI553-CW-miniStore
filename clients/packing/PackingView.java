@@ -63,6 +63,8 @@ public class PackingView implements Observer
     cp.add( pageTitle );
 
     theBtPack.setBounds( 16, 25+60*0, 80, 40 );   // Check Button
+    theBtPack.setBackground(new Color(0x022B3A));
+    theBtPack.setForeground(Color.WHITE);
     theBtPack.addActionListener(                   // Call back code
       e -> cont.doPacked() );
     cp.add( theBtPack );                          //  Add to canvas
@@ -72,6 +74,7 @@ public class PackingView implements Observer
     cp.add( theAction );                            //  Add to canvas
 
     theSP.setBounds( 110, 55, 270, 205 );           // Scrolling pane
+    theSP.setBackground(new Color(0xD0D6F8));
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas

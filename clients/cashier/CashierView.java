@@ -84,27 +84,41 @@ public class CashierView implements Observer
     
     theBtCheck.setBounds( 16, 25+60*0, 80, 40 );    // Check Button
     theBtCheck.setToolTipText("Check the product details by entering its code.");
+    theBtCheck.setBackground(new Color(0x022B3A));
+    theBtCheck.setForeground(Color.white);
+
     theBtCheck.addActionListener(                   // Call back code
       e -> cont.doCheck(theInput.getText(), Integer.parseInt(buyMany.getText())) );
     cp.add( theBtCheck );                           //  Add to canvas
 
-    theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button 
+    theBtBuy.setBounds( 16, 25+60*1, 80, 40 );      // Buy button
+    theBtBuy.setBackground(new Color(0x022B3A));
+    theBtBuy.setForeground(Color.white);
+
     theBtBuy.addActionListener(                     // Call back code
       e -> cont.doBuy() );
     cp.add( theBtBuy );                             //  Add to canvas
 
     theBtDiscount.setBounds( 16, 25+60*2, 80, 40 );
+    theBtDiscount.setBackground(new Color(0x022B3A));
+    theBtDiscount.setForeground(Color.white);
+
     theBtDiscount.addActionListener(
-            e -> cont.doDiscount(theInput.getText()) );
+            e -> cont.doDiscount());
     cp.add( theBtDiscount );
 
     theBtBought.setBounds( 16, 25+60*3, 80, 40 );   // Bought Button
+    theBtBought.setBackground(new Color(0x022B3A));
+    theBtBought.setForeground(Color.white);
+
     theBtBought.addActionListener(                  // Call back code
       e -> cont.doBought() );
     cp.add( theBtBought );                          //  Add to canvas
 
     theBtClear.setBounds( (80 * 4) - 25, 25+60*4, 80, 40 );
-    theBtClear.setBackground(Color.cyan);
+    theBtClear.setBackground(new Color(0x022B3A));
+    theBtClear.setForeground(Color.white);
+
     theBtClear.addActionListener(
             e -> cont.doClear() );
     cp.add( theBtClear );

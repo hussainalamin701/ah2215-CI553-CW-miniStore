@@ -95,17 +95,17 @@ public class CustomerView implements Observer
     cp.add( theBtCheckName );
 
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
-    theAction.setBackground(new Color(0xF5F1ED));
+    theAction.setBackground(new Color(0xD0D6F8));;
     theAction.setText( " " );                       // blank
     cp.add( theAction );                            //  Add to canvas
 
     theInput.setBounds( 110, 50, 270, 40 );         // Product no area
-    theInput.setBackground(new Color(0xF5F1ED));
+    theInput.setBackground(new Color(0xD0D6F8));
     theInput.setText("");                           // Blank
     cp.add( theInput );                             //  Add to canvas
     
     theSP.setBounds( 110, 100, 270, 160 );          // Scrolling pane
-    theOutput.setBackground(new Color(0xF5F1ED));
+    theOutput.setBackground(new Color(0xD0D6F8));
     theOutput.setText( "" );                        //  Blank
     theOutput.setFont( f );                         //  Uses font  
     cp.add( theSP );                                //  Add to canvas
